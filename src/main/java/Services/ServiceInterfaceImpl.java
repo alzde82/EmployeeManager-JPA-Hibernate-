@@ -8,15 +8,14 @@ public class ServiceInterfaceImpl<T extends ModelInterface>{
     private final RepositoryInterface<T>db;
     private EntityManagerFactory emf= Persistence.createEntityManagerFactory("default");
     private EntityManager em = emf.createEntityManager();
+
+
     public ServiceInterfaceImpl(RepositoryInterface<T> repository){
         this.db= repository;
     }
 
-    public boolean create(T model){
-        if(db.isExists(model))
-            return false;
-        else db.create(model);
-        return true;
+    public void create(T model){
+    db.create(model);
     }
 
     public T find (Class<T> clazz , int id){
@@ -26,9 +25,11 @@ public class ServiceInterfaceImpl<T extends ModelInterface>{
     public boolean update(T newModel){
         return db.update(newModel);
     }
-    public boolean delete(T model){
-        db.delete(model);
-        if(db.isExists(model))
+
+
+    public boolean delete(Class<T> clazz, int id){
+        db.delete(clazz,id);
+        if(db.isExists(clazz,id))
             return false;
         else
             return true;

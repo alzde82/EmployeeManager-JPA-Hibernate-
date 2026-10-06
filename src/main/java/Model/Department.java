@@ -13,7 +13,10 @@ public class Department implements ModelInterface{
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int departmentId;
     private String departmentName;
-    @OneToMany(mappedBy ="department",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy ="department",fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Employee> employee;
 
+    public Department(String departmentName) {
+        this.departmentName = departmentName;
+    }
 }

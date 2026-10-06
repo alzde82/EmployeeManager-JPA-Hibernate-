@@ -22,14 +22,20 @@ public interface RepositoryInterface<T extends ModelInterface> {
         et.commit();
         return em.contains(newModel);
     }
-    default void delete(T model){
+    default void delete(Class<T> clazz, int id){
+        T model= em.find(clazz,id);
         et.begin();
         em.remove(model);
         et.commit();
 
     }
-    default boolean isExists(T model){
-        return em.contains(model);
+    default boolean isExists(Class<T> clazz, int id){
+        T model = em.find(clazz,id);
+        if (model!=null)
+            return true;
+        else
+            return false;
+
     }
 
 }

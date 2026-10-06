@@ -13,10 +13,13 @@ public class Employee implements ModelInterface{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int employeeId;
     private String fullName;
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.PERSIST)
+
     private Department department;
-    @ManyToMany(mappedBy = "employee")
+    @ManyToMany(mappedBy = "employee",cascade = CascadeType.REMOVE)
     private List<Project>project;
 
-
+    public Employee(String fullName) {
+        this.fullName = fullName;
+    }
 }

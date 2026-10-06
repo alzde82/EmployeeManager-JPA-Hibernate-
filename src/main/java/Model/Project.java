@@ -16,6 +16,7 @@ public class Project implements ModelInterface{
     @ManyToMany
     private List<Employee> employee;
 
-
-
+    public Project(String projectName) {
+        this.projectName = projectName;
+    }
 }

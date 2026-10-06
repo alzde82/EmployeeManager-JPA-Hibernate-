@@ -5,6 +5,9 @@ import Model.ModelInterface;
 import Repository.DepartmentRepository;
 import Repository.RepositoryInterface;
 
-public class DepartmentService implements ServiceInterface<Department>{
+public class DepartmentService extends ServiceInterfaceImpl<Department>{
+    public DepartmentService(){
+        super(new DepartmentRepository());
+    }
 
 }
