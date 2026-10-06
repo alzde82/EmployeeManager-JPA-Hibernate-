@@ -9,7 +9,7 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @Entity
-public class Project {
+public class Project implements ModelInterface{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int projectId;
     private String projectName;

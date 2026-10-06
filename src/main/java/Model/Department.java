@@ -9,7 +9,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 
-public class Department {
+public class Department implements ModelInterface{
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int departmentId;
     private String departmentName;
